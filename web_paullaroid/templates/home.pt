@@ -1,12 +1,14 @@
-<html>
-    <head>
-        <title> Home </title>
-    </head>
-    <body>
-        <ul>
+<tal:block metal:use-macro="load: layout.pt">        
+    
+    <nav metal:fill-slot="navigo">
+        <a href="${request.route_path('home')}">Home</a>
+    </nav>
+
+    <div id="main" metal:fill-slot="main">
+    <ul>
             <li tal:repeat="event events">
                 <a href="${request.route_path('event',event=event)}">${event}</a>
             </li>
         </ul>
-    </body>
-</html>
+    </div>
+</tal:block>

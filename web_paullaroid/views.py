@@ -13,7 +13,7 @@ def home_view(request):
     for event in events_gen: 
         events.append(os.path.basename(event))
     
-    return {'project': 'web_paullaroid', 'events': events}
+    return {'project': 'web_paullaroid', 'title': 'PauLLAroid' , 'events': events}
 
 
 @view_config(route_name='event', renderer='templates/event.pt')
@@ -25,13 +25,14 @@ def event_view(request):
     for image in images_gen: 
         images.append(os.path.basename(image))
     
-    return {'event_name': event_name, 'images' : images}
+    return {'title' : event_name , 'event_name': event_name, 'images' : images}
 
 
 @view_config(route_name='image', renderer='templates/image.pt')
 def image_view(request):
-    return {'image': request.matchdict.get('image'), 'event':
-            request.matchdict.get('event')}
+    return {'title' : request.matchdict.get('event') +
+request.matchdict.get('image') ,  'image': request.matchdict.get('image'),
+'event_name':  request.matchdict.get('event')}
 
 
 @view_config(route_name='image_raw')
