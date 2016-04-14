@@ -3,10 +3,10 @@ import os
 from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(here, 'README.txt')) as f:
-    README = f.read()
-with open(os.path.join(here, 'CHANGES.txt')) as f:
-    CHANGES = f.read()
+with open(os.path.join(here, 'README.txt')) as readme:
+    README = readme.read()
+with open(os.path.join(here, 'CHANGES.txt')) as changes:
+    CHANGES = changes.read()
 
 requires = [
     'pyramid',
