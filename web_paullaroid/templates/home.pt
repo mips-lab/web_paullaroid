@@ -1,0 +1,10 @@
+<html>
+    <head>
+        <title> Home </title>
+    </head>
+    <body>
+        <ul>
+            <li tal:repeat="event events">${event}</li>
+        </ul>
+    </body>
+</html>
