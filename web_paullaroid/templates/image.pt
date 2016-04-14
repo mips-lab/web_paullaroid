@@ -1,0 +1,10 @@
+<html>
+<head>
+    <title>PauLLAroid - Photo</title>
+</head>
+<body>
+    <img src="${request.route_path('image_raw',
+    event=request.matchdict['event'], image=request.matchdict['image'])}"
+    alt="bla">
+</body>
+</html>

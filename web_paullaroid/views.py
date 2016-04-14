@@ -12,3 +12,7 @@ def home_view(request):
     return {'project': 'web_paullaroid', 'events': events}
 
 
+@view_config(route_name='image', renderer='templates/image.pt')
+def image_view(request):
+    return {'image': request.matchdict.get('image'), 'event':
+    request.matchdict.get('event')}
