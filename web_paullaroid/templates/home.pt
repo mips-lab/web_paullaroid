@@ -4,7 +4,9 @@
     </head>
     <body>
         <ul>
-            <li tal:repeat="event events">${event}</li>
+            <li tal:repeat="event events">
+                <a href="${request.route_path('event',event=event)}">${event}</a>
+            </li>
         </ul>
     </body>
 </html>
