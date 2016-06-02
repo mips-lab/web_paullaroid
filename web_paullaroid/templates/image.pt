@@ -6,6 +6,8 @@
     </nav>
 
     <div id="main" metal:fill-slot="main">
-        <img src="${request.route_path('image_raw', event=request.matchdict['event'], image=request.matchdict['image'])}" alt="bla">
+        <img src="${request.route_path('image_raw',
+event=request.matchdict['event'], image=request.matchdict['image'])}" alt="bla"
+style="width:100%">
     </div>
 </tal:block>

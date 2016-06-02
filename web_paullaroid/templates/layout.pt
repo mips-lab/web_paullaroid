@@ -1,4 +1,6 @@
-<html>
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:define-macro="layout">
     <head>
         <title> ${title}</title>
     </head>

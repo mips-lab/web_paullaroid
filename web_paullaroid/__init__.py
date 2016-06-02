@@ -13,6 +13,7 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('event', '/{event}/')
     config.add_route('image', '/{event}/{image}/')
+    config.add_route('image_thumb', '/{event}/{image}/thumb/')
     config.add_route('image_raw', '/{event}/{image}/raw/')
     config.scan()
     return config.make_wsgi_app()

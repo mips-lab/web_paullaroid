@@ -1,15 +1,28 @@
 <tal:block metal:use-macro="load: layout.pt">        
 
     <nav metal:fill-slot="navigo">
-       <a href="${request.route_path('home')}">Home</a>  > <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
+       <a href="${request.route_path('home')}">Home</a> &gt; <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
     </nav>
+
     <div id="main" metal:fill-slot="main">
-        <ul>
-            <li tal:repeat="image images">
-                <a href="${request.route_path('image',image=image,
-event=request.matchdict['event'])}">${image}</a>
-            </li>
-        </ul>
+        <div id="search">
+           <p>Chercher votre photo : <p>
+           <form method="post" action= "${request.route_path('event', event=event_name)}">
+                <select id="date_pict" name="date_pict"><option tal:repeat="date
+dates" value="${date.isoformat()}">${date.strftime('%d-%m-%Y')}</option></select> 
+                <input type="submit" value="Chercher">
+            </form>
+
+            </div>
+            <div tal:repeat="image images" style="display:block; width:200px;
+float:left; padding-left:5px;">
+                <a href="${request.route_path('image',image=image, event=request.matchdict['event'])}">
+                <img src="${request.route_path('image_thumb',
+                                                event=request.matchdict['event'],
+                                                image=image)}" 
+                     alt="${image}">
+                </a>
+            </div>
     </div>
 </tal:block>
 
