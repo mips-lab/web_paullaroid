@@ -4,17 +4,24 @@
        <a href="${request.route_path('home')}">Home</a> &gt; <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
     </nav>
 
-    <div id="main" metal:fill-slot="main">
+       <div id="main" metal:fill-slot="main">
         <div id="search">
            <p>Chercher votre photo : <p>
            <form method="post" action= "${request.route_path('event', event=event_name)}">
-                <select id="date_pict" name="date_pict"><option tal:repeat="date
-dates" value="${date.isoformat()}">${date.strftime('%d-%m-%Y')}</option></select> 
+                <select id="date_pict" name="date_pict">
+                    <option tal:repeat="date dates" value="${date.isoformat()}" >
+                            ${date.strftime('%d-%m-%Y')}
+                    </option>
+                    
+                    <option tal:condition="selected_date" value="${selected_date.isoformat()}"  selected>
+                            ${selected_date.strftime('%d-%m-%Y')}
+                    </option>
+                </select> 
                 <input type="submit" value="Chercher">
             </form>
 
-            </div>
-            <div tal:repeat="image images" style="display:block; width:200px;
+          </div>
+          <div tal:repeat="image images" style="display:block; width:200px;
 float:left; padding-left:5px;">
                 <a href="${request.route_path('image',image=image, event=request.matchdict['event'])}">
                 <img src="${request.route_path('image_thumb',
@@ -23,6 +30,6 @@ float:left; padding-left:5px;">
                      alt="${image}">
                 </a>
             </div>
-    </div>
+       </div>
 </tal:block>
 
