@@ -18,6 +18,9 @@ def on_launch(event):
     db = couch[event.app.registry.settings.get('couchdb_db')]
 
     for view in glob.glob(os.path.join(os.path.dirname(__file__), 'data', '*.js')):
-        with open(view, 'rb') as current:
+        with open(view, 'r') as current:
             doc = json.load(current)
-            db.save(doc)
+            try:
+                db.save(doc)
+            except couchdb.http.ResourceConflict:
+                pass
