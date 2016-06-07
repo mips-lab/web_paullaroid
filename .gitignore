@@ -65,4 +65,4 @@ bin/
 *.swp
 
 #data
-data/
+./data/
