@@ -50,7 +50,10 @@ def event_view(request):
     else:
         images = images[:10]
 
-    return {'title' : event_name , 'event_name': event_name, 'images' : images, 'dates' : dates}
+    return {'title': event_name,
+            'event_name': event_name,
+            'images': images,
+             'dates': dates}
 
 
 @view_config(route_name='image', renderer='templates/image.pt')
@@ -58,9 +61,9 @@ def image_view(request):
     ''' image view
         see image with 100% of screen size
     '''
-    return {'title' : request.matchdict.get('event') +
-request.matchdict.get('image') ,  'image': request.matchdict.get('image'),
-'event_name':  request.matchdict.get('event')}
+    return {'title': request.matchdict.get('event') + request.matchdict.get('image'),
+            'image': request.matchdict.get('image'),
+            'event_name':  request.matchdict.get('event')}
 
 
 @view_config(route_name='image_thumb')
@@ -70,8 +73,9 @@ def image_thumb_view(request):
     '''
     event_name = request.matchdict['event']
     image_name = request.matchdict['image']
-    path = os.path.join(request.registry.settings.get('directory'),event_name,
-image_name+".thumbnail")
+    path = os.path.join(request.registry.settings.get('directory'),
+                        event_name,
+                        image_name+".thumbnail")
     response = FileResponse(path, request=request)
 #    reponse.content_disposition = u'attachment; filename="%s"' % image_name
     return response
@@ -84,8 +88,9 @@ def image_raw_view(request):
     '''
     event_name = request.matchdict['event']
     image_name = request.matchdict['image']
-    path = os.path.join(request.registry.settings.get('directory'),event_name,
-image_name)
+    path = os.path.join(request.registry.settings.get('directory'),
+                        event_name,
+                        image_name)
     response = FileResponse(path, request=request)
 #    reponse.content_disposition = u'attachment; filename="%s"' % image_name
     return response
