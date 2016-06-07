@@ -4,21 +4,27 @@
        <a href="${request.route_path('home')}">Home</a> &gt; <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
     </nav>
 
-       <div id="main" metal:fill-slot="main">
-        <div id="search">
-           <p>Chercher votre photo : <p>
-           <form method="post" action= "${request.route_path('event', event=event_name)}">
-                <select id="date_pict" name="date_pict">
-                    <option tal:repeat="date dates" value="${date.isoformat()}" >
-                            ${date.strftime('%d-%m-%Y')}
-                    </option>
-                    
-                    <option tal:condition="selected_date" value="${selected_date.isoformat()}"  selected>
-                            ${selected_date.strftime('%d-%m-%Y')}
-                    </option>
-                </select> 
-                <input type="submit" value="Chercher">
-            </form>
+  <div id="main" metal:fill-slot="main">
+    <div id="search">
+      <h3>Chercher votre photo : </h3>
+      <form method="GET" action= "${request.route_path('event', event=event_name)}">
+        <select id="date_pict" name="date_pict">
+	  <tal:block repeat="date dates">
+            <option
+		selected="selected"
+		value="${date.isoformat()}"
+		tal:condition="date.isoformat() == request.GET.get('date_pict')">
+              ${date.strftime('%d-%m-%Y')}
+            </option>
+	      <option
+		  value="${date.isoformat()}"
+		  tal:condition="date.isoformat() != request.GET.get('date_pict')">
+                  ${date.strftime('%d-%m-%Y')}
+            </option>
+	  </tal:block>
+        </select>
+        <input type="submit" value="Chercher" />
+      </form>
 
           </div>
           <div tal:repeat="image images" style="display:block; width:200px;

@@ -26,10 +26,10 @@ def event_view(request):
         first visit just see only 10 newest pics, 
         you can select date, to find specific pic 
     '''
-    date_post = request.POST.get('date_pict')
-    event_name = request.matchdict['event'] 
-    
-    images_gen = glob.iglob(os.path.join(request.registry.settings.get('directory'),event_name,'*.jpg')) #it's a gen 
+    date_post = request.GET.get('date_pict')
+    event_name = request.matchdict['event']
+
+    images_gen = glob.iglob(os.path.join(request.registry.settings.get('directory'), event_name, '*.jpg'))  # it's a gen
     images = []
     for image in images_gen: 
         images.append(os.path.basename(image))
