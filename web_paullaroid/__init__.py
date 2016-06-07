@@ -1,4 +1,5 @@
 from pyramid.config import Configurator
+import couchdb
 
 
 def main(global_config, **settings):

@@ -13,6 +13,7 @@ requires = [
     'pyramid_chameleon',
     'pyramid_debugtoolbar',
     'waitress',
+    'couchdb'
     ]
 
 setup(name='web_paullaroid',
