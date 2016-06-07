@@ -1,8 +1,9 @@
-<tal:block metal:use-macro="load: layout.pt">        
+<?xml version="1.0" encoding="utf-8"?>
+<tal:block metal:use-macro="load: layout.pt">
 
-    <nav metal:fill-slot="navigo">
-       <a href="${request.route_path('home')}">Home</a> &gt; <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
-    </nav>
+  <nav metal:fill-slot="navigo">
+    <a href="${request.route_path('home')}">Home</a> &gt; <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
+  </nav>
 
   <div id="main" metal:fill-slot="main">
     <div id="search">
@@ -26,16 +27,15 @@
         <input type="submit" value="Chercher" />
       </form>
 
-          </div>
-          <div tal:repeat="image images" style="display:block; width:200px;
-float:left; padding-left:5px;">
-                <a href="${request.route_path('image',image=image, event=request.matchdict['event'])}">
-                <img src="${request.route_path('image_thumb',
-                                                event=request.matchdict['event'],
-                                                image=image)}" 
-                     alt="${image}">
-                </a>
-            </div>
-       </div>
+    </div>
+    <div tal:repeat="image images" style="display:block; width:200px;
+					  float:left; padding-left:5px;">
+      <a href="${request.route_path('image',image=image, event=request.matchdict['event'])}">
+        <img src="${request.route_path('image_thumb',
+                  event=request.matchdict['event'],
+                  image=image)}"
+             alt="${image}" />
+      </a>
+    </div>
+  </div>
 </tal:block>
-
