@@ -7,7 +7,6 @@ def main(global_config, **settings):
     """
     config = Configurator(settings=settings)
 
- #   config.registry.settings = settings
 
     config.include('pyramid_chameleon')
     config.add_static_view('static', 'static', cache_max_age=3600)
@@ -17,4 +16,11 @@ def main(global_config, **settings):
     config.add_route('image_thumb', '/{event}/{image}/thumb/')
     config.add_route('image_raw', '/{event}/{image}/raw/')
     config.scan()
+
+    couch = couchdb.Server(settings.get('couchdb_url'))
+
+    def get_couchdb(request):
+        return couch
+
+    config.add_request_method(get_couchdb, 'couchdb', reify=True)
     return config.make_wsgi_app()
