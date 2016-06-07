@@ -18,9 +18,10 @@ def main(global_config, **settings):
     config.scan()
 
     couch = couchdb.Server(settings.get('couchdb_url'))
+    db = couch[settings.get('couchdb_db')]
 
     def get_couchdb(request):
-        return couch
+        return db
 
-    config.add_request_method(get_couchdb, 'couchdb', reify=True)
+    config.add_request_method(get_couchdb, 'db', reify=True)
     return config.make_wsgi_app()

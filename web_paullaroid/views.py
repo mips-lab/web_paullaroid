@@ -12,6 +12,11 @@ def home_view(request):
     ''' home view
         parse dir in data, each dir is an event
     '''
+
+    events = request.db.view('_design/event')
+
+    import pdb; pdb.set_trace()
+
     events_gen = glob.iglob(os.path.join(request.registry.settings.get('directory'),'*')) #it's a gen
     events = []
     for event in events_gen:
