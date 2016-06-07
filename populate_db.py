@@ -1,5 +1,5 @@
 import couchdb
-import glob 
+import glob
 import os
 
 couch = couchdb.Server('http://127.0.0.1:5984')
@@ -14,20 +14,17 @@ for event in events_gen:
 
     db.save(doc)
     pict_gen = glob.iglob(os.path.join(event,'*.jpg'))
-    for pict in pict_gen: 
+    for pict in pict_gen:
         picture = { '_id' : os.path.basename(pict), 'type_doc':'image',
-                    'datetime': ' '.join(os.path.basename(pict).split('_')[:-1]) }
+                    'datetime': ' '.join(os.path.basename(pict).split('_')[:-1]),
+                    'event_id': os.path.basename(event)}
 
         db.save(picture)
         with open(pict, 'rb') as current_pict_full:
             db.put_attachment(picture, current_pict_full, filename='full',
                               content_type='image/jpeg')
-              
+
 
         with open(pict+'.thumbnail', 'rb') as current_pict_thumb:
             db.put_attachment(picture, current_pict_thumb, filename='thumb',
                               content_type='image/jpeg')
-              
-
-
-
