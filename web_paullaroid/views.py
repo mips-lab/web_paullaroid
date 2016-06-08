@@ -13,16 +13,9 @@ def home_view(request):
         parse dir in data, each dir is an event
     '''
 
-    events = request.db.view('_design/event')
+    eventsV = request.db.view('_design/event/_view/all')
 
-    import pdb; pdb.set_trace()
-
-    events_gen = glob.iglob(os.path.join(request.registry.settings.get('directory'),'*')) #it's a gen
-    events = []
-    for event in events_gen:
-        events.append(os.path.basename(event))
-
-    return {'project': 'web_paullaroid', 'title': 'PauLLAroid' , 'events': events}
+    return {'project': 'web_paullaroid', 'title': 'PauLLAroid' , 'events': [row.id for row in eventsV]}
 
 
 @view_config(route_name='event', renderer='templates/event.pt')
