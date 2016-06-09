@@ -27,31 +27,17 @@ def event_view(request):
     date_post = request.GET.get('date_pict')
     event_name = request.matchdict['event']
 
-    images_gen = glob.iglob(os.path.join(request.registry.settings.get('directory'), event_name, '*.jpg'))  # it's a gen
-    images = []
+    images = request.db.view('_design/images/_view/all', reduce=False,
+                             start_key=[event_name], end_key=[event_name, {}])
 
-    for image in images_gen:
-        images.append(os.path.basename(image))
-
-    images.sort(reverse=True)
-
-    dates_tmp= {image.split('_')[0] for image in images}
-
-    dates = [datetime.date(int(date.split('-')[0]),
-                           int(date.split('-')[1]),
-                           int(date.split('-')[2])) for date in dates_tmp]
-    dates.sort(reverse=True)
-
-    if date_post:
-        images = [image for image in images if image.startswith(date_post)]
-
-    else:
-        images = images[:10]
+    dates = request.db.view('_design/images/_view/all', reduce=True,
+                             start_key=[event_name], end_key=[event_name, {}],
+                             group_level=2)
 
     return {'title': event_name,
             'event_name': event_name,
-            'images': images,
-             'dates': dates}
+            'images': [image.id for image in images],
+             'dates': [datetime.datetime.strptime(date.key[1], '%Y-%m-%d').date() for date in dates]}
 
 
 @view_config(route_name='image', renderer='templates/image.pt')
