@@ -13,9 +13,12 @@ def home_view(request):
         parse dir in data, each dir is an event
     '''
 
-    eventsV = request.db.view('_design/event/_view/all')
+    events = request.db.view('_design/images/_view/all', reduce=True,
+                             group_level=1)
 
-    return {'project': 'web_paullaroid', 'title': 'PauLLAroid' , 'events': [row.id for row in eventsV]}
+
+    return {'project': 'web_paullaroid', 'title': 'PauLLAroid',
+            'events': [row for row in events]}
 
 
 @view_config(route_name='event', renderer='templates/event.pt')
@@ -24,14 +27,25 @@ def event_view(request):
         first visit just see only 10 newest pics,
         you can select date, to find specific pic
     '''
-    date_post = request.GET.get('date_pict')
+    selected_date = request.GET.get('date_pict')
     event_name = request.matchdict['event']
 
-    images = request.db.view('_design/images/_view/all', reduce=False,
-                             start_key=[event_name], end_key=[event_name, {}])
+
+    if selected_date:
+        images = request.db.view('_design/images/_view/all', reduce=False,
+                                  start_key=[event_name, selected_date],
+                                  end_key=[event_name, selected_date, {}])
+    else:
+        images = request.db.view('_design/images/_view/all', reduce=False,
+                                  start_key=[event_name],
+                                  end_key=[event_name, {}]) 
+
+        images = [image for image in images][:10]
+
 
     dates = request.db.view('_design/images/_view/all', reduce=True,
-                             start_key=[event_name], end_key=[event_name, {}],
+                             start_key=[event_name],
+                             end_key=[event_name, {}],
                              group_level=2)
 
     return {'title': event_name,
