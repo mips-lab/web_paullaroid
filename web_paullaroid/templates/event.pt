@@ -28,8 +28,8 @@
       </form>
 
     </div>
-    <div tal:repeat="image images" style="display:block; width:200px;
-					  float:left; padding-left:5px;">
+    <section>
+    <div class='truc' tal:repeat="image images">
       <a href="${request.route_path('image',image=image, event=request.matchdict['event'])}">
         <img src="${request.route_path('image_thumb',
                   event=request.matchdict['event'],
@@ -37,5 +37,6 @@
              alt="${image}" />
       </a>
     </div>
+    </section>
   </div>
 </tal:block>

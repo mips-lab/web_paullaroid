@@ -3,6 +3,8 @@
       metal:define-macro="layout">
     <head>
         <title> ${title}</title>
+        <link type="text/css" rel="stylesheet"
+href="${request.static_url('web_paullaroid:static/style.css')}"/>
     </head>
     <body>
         <h1> ${title} </h1>

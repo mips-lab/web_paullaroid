@@ -1,0 +1,39 @@
+@font-face { 
+  font-family: 'GlacialItalic'; 
+  src: url('GlacialIndifference-Italic.otf'); 
+}
+
+@font-face { 
+  font-family: 'GlacialRegular'; 
+  src: url('GlacialIndifference-Regular.otf'); 
+}
+
+@font-face { 
+  font-family: 'GlacialBold'; 
+  src: url('GlacialIndifference-Bold.otf'); 
+}
+
+body{
+	padding: 0;
+	margin:0px;
+    	background-color: white;
+    	font-family: 'GlacialRegular', sans-serif;
+}
+
+
+section{
+	width: 90%;
+	margin:auto;
+    	margin-top: 20px;
+    	position: relative;
+    	text-align: center;
+}
+
+.truc{
+	width: 200px;
+	height: 200px;
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+	padding: 2;
+}
