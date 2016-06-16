@@ -5,9 +5,12 @@
     </nav>
 
     <div id="main" metal:fill-slot="main">
-    <ul>
-            <li tal:repeat="event events">
-                <a href="${request.route_path('event',event=event)}">${event}</a>
+    <ul tal:repeat="event events">
+            <li>
+                <p>
+                    il y a actuellement ${event.value['nb']} photos dans cette
+galerie <a
+                    href="${request.route_path('event',event=event.key[0])}">${event.key[0]}</a></p>
             </li>
         </ul>
     </div>
