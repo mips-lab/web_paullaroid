@@ -70,7 +70,7 @@ def image_thumb_view(request):
 
     if request.registry.settings.get('x-accel', 'false').lower() == 'true':
         headers = response.headers
-        headers['X-Accel-Redirect'] =  str('/couch/%s/thumb') % image_name
+        headers['X-Accel-Redirect'] =  str('/couch/%s/thumb' % image_name)
     else:
         image = request.db.get_attachment(image_name, 'thumb')
         response.body_file = image
@@ -89,7 +89,7 @@ def image_raw_view(request):
     if request.registry.settings.get('x-accel', 'false').lower() == 'true':
 
         headers = response.headers
-        headers['X-Accel-Redirect'] =  str('/couch/%s/full') % image_name
+        headers['X-Accel-Redirect'] =  str('/couch/%s/full' % image_name)
     else:
         image = request.db.get_attachment(image_name, 'full')
         response.body_file = image

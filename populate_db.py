@@ -2,7 +2,7 @@ import couchdb
 import glob
 import os
 
-couch = couchdb.Server('http://127.0.0.1:5984')
+couch = couchdb.Server('http://couchdb.paulla.asso.fr')
 
 db = couch['paullaroid']
 
