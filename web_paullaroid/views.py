@@ -70,6 +70,14 @@ def image_thumb_view(request):
     '''
     event_name = request.matchdict['event']
     image_name = request.matchdict['image']
+
+    if request.registry.settings.get('x-accel', 'false').lower() == 'true':
+        response = request.response
+        headers = response.headers
+        headers['X-Accel-Redirect'] =  str('/couch/%s/thumb') % image_name
+
+        return response
+
     path = os.path.join(request.registry.settings.get('directory'),
                         event_name,
                         image_name+".thumbnail")
@@ -85,6 +93,13 @@ def image_raw_view(request):
     '''
     event_name = request.matchdict['event']
     image_name = request.matchdict['image']
+
+    if request.registry.settings.get('x-accel', 'false').lower() == 'true':
+        response = request.response
+        headers = response.headers
+        headers['X-Accel-Redirect'] =  str('/couch/%s/full') % image_name
+
+        return response
     path = os.path.join(request.registry.settings.get('directory'),
                         event_name,
                         image_name)
