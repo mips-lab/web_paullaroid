@@ -1,13 +1,13 @@
-<tal:block metal:use-macro="load: layout.pt">        
+<tal:block metal:use-macro="load: layout.pt">
 
     <nav metal:fill-slot="navigo">
        <a href="${request.route_path('home')}">Home</a>  >
-       <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a> 
+       <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
     </nav>
 
     <div id="main" metal:fill-slot="main">
-        <img src="${request.route_path('image_raw',
-event=request.matchdict['event'], image=request.matchdict['image'])}" alt="bla"
-style="width:100%">
+      <img src="${request.route_path('image_raw', event=request.matchdict['event'], image=request.matchdict['image'])}"
+	   alt="bla"
+	  style="width:100%" />
     </div>
 </tal:block>
