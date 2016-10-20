@@ -1,5 +1,4 @@
 import datetime
-import glob
 import os.path
 
 from pyramid.view import view_config
@@ -38,7 +37,7 @@ def event_view(request):
     else:
         images = request.db.view('_design/images/_view/all', reduce=False,
                                   start_key=[event_name],
-                                  end_key=[event_name, {}]) 
+                                  end_key=[event_name, {}])
 
         images = [image for image in images][:10]
 
