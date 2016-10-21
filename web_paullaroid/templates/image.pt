@@ -1,17 +1,18 @@
 <tal:block metal:use-macro="load: layout.pt">
 
     <nav metal:fill-slot="navigo">
-       <a href="${request.route_path('home')}">Home</a>  >
-       <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
+       <a title="PauLLARoid Home" href="${request.route_path('home')}">Home</a>  >
+       <a title="${event_name}" href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
     </nav>
 
     <div id="main" metal:fill-slot="main">
-      <a href="${request.route_path('image_raw',
+      <a title="image prise le ${date_image} pour l'event ${event_name}"
+         href="${request.route_path('image_raw',
                                      event=event_name,
                                      image=request.matchdict['image'])  }">
 
       <img src="${request.route_path('image_raw', event=request.matchdict['event'], image=request.matchdict['image'])}"
-	   alt="${request.matchdict['image']}" />
+       alt="image prise le ${date_image} pour l'event ${event_name}" />
         </a>
     </div>
 </tal:block>
