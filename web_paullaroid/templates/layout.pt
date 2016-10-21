@@ -6,14 +6,16 @@
         <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/style.css')}"/>
     </head>
     <body>
+		<div id="mainWrapper">
+		<header> </header>
         <h1> ${title} </h1>
         <br />
             <tal:block metal:define-slot="navigo">
             </tal:block>
 
-            <div class="col pam content">
-              <tal:block metal:define-slot="main">
-            </tal:block>
-        </div>
+            <main>
+        	</main>
+		<footer> </footer>
+		</div>
     </body>
 </html>
