@@ -5,7 +5,7 @@
     </nav>
 
     <div id="main" metal:fill-slot="main">
-    <ul tal:repeat="event events">
+    <ul tal:repeat="event events" class="block block-list">
             <li>
                 <p class="event">
                     il y a actuellement ${event.value['nb']} photos dans cette galerie
