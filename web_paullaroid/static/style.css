@@ -1,16 +1,13 @@
 @font-face { 
   font-family: 'GlacialItalic'; 
-  src: url('GlacialIndifference-Italic.otf'); 
 }
 
 @font-face { 
   font-family: 'GlacialRegular'; 
-  src: url('GlacialIndifference-Regular.otf'); 
 }
 
 @font-face { 
   font-family: 'GlacialBold'; 
-  src: url('GlacialIndifference-Bold.otf'); 
 }
 
 body{
