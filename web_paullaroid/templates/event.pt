@@ -7,7 +7,7 @@
   </nav>
 
   <div id="main" metal:fill-slot="main">
-    <div id="search">
+    <div id="search" tal:condition="len(dates) > 1">
       <h3>Chercher votre photo : </h3>
       <form method="GET" action= "${request.route_path('event', event=event_name)}">
         <select id="date_pict" name="date_pict">
