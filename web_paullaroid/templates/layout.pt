@@ -1,22 +1,24 @@
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:define-macro="layout">
-    <head>
-        <title> ${title}</title>
-		<link rel="stylesheet" href="${request.static_url('web_paullaroid:static/knacss.css')}">
-        <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/style.css')}"/>
-    </head>
-    <body>
-		<div id="mainWrapper">
-		<header> </header>
-        <h1> ${title} </h1>
-        <br />
-            <tal:block metal:define-slot="navigo">
-            </tal:block>
+  <head>
+    <title> ${title}</title>
+    <link rel="stylesheet" href="${request.static_url('web_paullaroid:static/knacss.css')}" > </link>
+    <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/style.css')}"> </link>
+  </head>
+  <body>
+    <div id="mainWrapper">
+      <header> </header>
+      <h1> ${title} </h1>
+      <br />
+      <tal:block metal:define-slot="navigo">
+      </tal:block>
 
-            <main>
-        	</main>
-		<footer> </footer>
-		</div>
-    </body>
+      <main>
+	<tal:block metal:define-slot="main">
+	</tal:block>
+      </main>
+      <footer> </footer>
+    </div>
+  </body>
 </html>
