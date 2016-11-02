@@ -5,7 +5,7 @@
        <a title="${event_name}" href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
     </nav>
 
-    <div id="main" metal:fill-slot="main">
+    <div id="main" class="flex-container-v" metal:fill-slot="main">
       <a title="image prise le {date_image} pour l'event ${event_name}"
          href="${request.route_path('image_raw',
                                      event=event_name,
@@ -13,7 +13,7 @@
 
       <img src="${request.route_path('image_raw', event=request.matchdict['event'], image=request.matchdict['image'])}"
 	   alt="image prise le {date_image} pour l'event ${event_name}"
-	   class="image_full w75 mam"/>
+	   class="image_full w75 mam center"/>
         </a>
     </div>
 </tal:block>

@@ -6,7 +6,7 @@
     <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
   </nav>
 
-  <div id="main" metal:fill-slot="main">
+  <div id="main" class="center" metal:fill-slot="main">
     <div id="search" tal:condition="len(dates) > 1">
       <h3>Chercher votre photo : </h3>
       <form method="GET" action= "${request.route_path('event', event=event_name)}">
@@ -35,7 +35,8 @@
         <img src="${request.route_path('image_thumb',
                   event=request.matchdict['event'],
                   image=image)}"
-             alt="${image}" />
+             alt="${image}"
+	     class="thumb mas"/>
       </a>
     </div>
     </section>
