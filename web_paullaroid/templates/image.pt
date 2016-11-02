@@ -6,13 +6,13 @@
     </nav>
 
     <div id="main" metal:fill-slot="main">
-      <a title="image prise le ${date_image} pour l'event ${event_name}"
+      <a title="image prise le {date_image} pour l'event ${event_name}"
          href="${request.route_path('image_raw',
                                      event=event_name,
                                      image=request.matchdict['image'])  }">
 
       <img src="${request.route_path('image_raw', event=request.matchdict['event'], image=request.matchdict['image'])}"
-       alt="image prise le ${date_image} pour l'event ${event_name}" />
+	   alt="image prise le {date_image} pour l'event ${event_name}" />
         </a>
     </div>
 </tal:block>
