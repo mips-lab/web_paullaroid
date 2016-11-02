@@ -9,11 +9,12 @@
   </head>
   <body>
     <div id="mainWrapper">
-      <header> </header>
-      <h1> ${title} </h1>
-      <br />
-      <tal:block metal:define-slot="navigo">
-      </tal:block>
+      <header>
+	<h1> ${title} </h1>
+	<br />
+	<tal:block metal:define-slot="navigo">
+	</tal:block>
+      </header>
 
       <main>
 	<tal:block metal:define-slot="main">

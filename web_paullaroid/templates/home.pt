@@ -1,17 +1,20 @@
 <tal:block metal:use-macro="load: layout.pt">
 
     <nav metal:fill-slot="navigo">
-        <a href="${request.route_path('home')}">Home</a>
+      <a href="${request.route_path('home')}">Home</a>
     </nav>
 
     <div id="main" metal:fill-slot="main">
     <ul tal:repeat="event events" class="block block-list">
-            <li>
-                <p class="event">
-                    il y a actuellement ${event.value['nb']} photos dans cette galerie
-		    <a class="event_link" href="${request.route_path('event',event=event.key[0])}">${event.key[0]}</a>
-		</p>
-            </li>
-        </ul>
+      <li>
+        <p class="event">
+          il y a actuellement ${event.value['nb']} photos dans cette galerie
+	  <a class="event_link"
+	     href="${request.route_path('event',event=event.key[0])}">
+	    ${event.key[0]}
+	  </a>
+	</p>
+      </li>
+    </ul>
     </div>
 </tal:block>

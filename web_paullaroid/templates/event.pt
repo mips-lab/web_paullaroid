@@ -18,7 +18,7 @@
 		tal:condition="date.isoformat() == request.GET.get('date_pict')">
               ${date.strftime('%d-%m-%Y')}
             </option>
-	      <option
+	    <option
 		  value="${date.isoformat()}"
 		  tal:condition="date.isoformat() != request.GET.get('date_pict')">
                   ${date.strftime('%d-%m-%Y')}
@@ -27,18 +27,17 @@
         </select>
         <input type="submit" value="Chercher" />
       </form>
-
     </div>
     <section>
-    <div class='truc' tal:repeat="image images">
-      <a href="${request.route_path('image',image=image, event=request.matchdict['event'])}">
-        <img src="${request.route_path('image_thumb',
-                  event=request.matchdict['event'],
-                  image=image)}"
-             alt="${image}"
-	     class="thumb mas"/>
-      </a>
-    </div>
+      <div class='truc' tal:repeat="image images">
+	<a href="${request.route_path('image',image=image, event=request.matchdict['event'])}">
+          <img src="${request.route_path('image_thumb',
+                    event=request.matchdict['event'],
+                    image=image)}"
+               alt="${image}"
+	       class="thumb mas"/>
+	</a>
+      </div>
     </section>
   </div>
 </tal:block>
