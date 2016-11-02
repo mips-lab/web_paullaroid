@@ -3,6 +3,7 @@
       metal:define-macro="layout">
   <head>
     <title> ${title}</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> </meta>
     <link rel="stylesheet" href="${request.static_url('web_paullaroid:static/knacss.css')}" > </link>
     <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/style.css')}"> </link>
   </head>
