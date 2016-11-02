@@ -12,7 +12,8 @@
                                      image=request.matchdict['image'])  }">
 
       <img src="${request.route_path('image_raw', event=request.matchdict['event'], image=request.matchdict['image'])}"
-	   alt="image prise le {date_image} pour l'event ${event_name}" />
+	   alt="image prise le {date_image} pour l'event ${event_name}"
+	   class="image_full w75 mam"/>
         </a>
     </div>
 </tal:block>
