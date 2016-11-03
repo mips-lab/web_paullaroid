@@ -1,6 +1,7 @@
 import datetime
 
 from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPFound
 
 
 @view_config(route_name='home', renderer='templates/home.pt')
@@ -96,3 +97,16 @@ def image_raw_view(request):
         response.content_type = 'image/jpeg'
 
     return response
+
+
+@view_config(route_name="image_next", renderer='json')
+def image_next(request):
+    image = request.matchdict['image']
+    date = image.split('_')[0]
+    event_name = request.matchdict['event']
+    images = request.db.view('_design/images/_view/all', reduce=False,
+                              start_key=[event_name, date, image],
+                              limit=1, skip=1)
+
+    if images.rows:
+        return HTTPFound(location=request.route_path('image', event=event_name, image=images.rows[0].id))
