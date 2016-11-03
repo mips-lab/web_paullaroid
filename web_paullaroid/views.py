@@ -110,3 +110,19 @@ def image_next(request):
 
     if images.rows:
         return HTTPFound(location=request.route_path('image', event=event_name, image=images.rows[0].id))
+
+    return HTTPFound(location=request.route_path('image', event=event_name, image=image))
+
+@view_config(route_name="image_prev", renderer='json')
+def image_prev(request):
+    image = request.matchdict['image']
+    date = image.split('_')[0]
+    event_name = request.matchdict['event']
+    images = request.db.view('_design/images/_view/all', reduce=False,
+                              start_key=[event_name, date, {}],
+                              limit=1, skip=1, descending=True)
+
+    if images.rows:
+        return HTTPFound(location=request.route_path('image', event=event_name, image=images.rows[0].id))
+
+    return HTTPFound(location=request.route_path('image', event=event_name, image=image))
