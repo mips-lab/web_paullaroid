@@ -1,36 +1,12 @@
-@font-face {
-  font-family: 'GlacialItalic';
-}
 
-@font-face {
-  font-family: 'GlacialRegular';
-}
-
-@font-face {
-  font-family: 'GlacialBold';
-}
-
-body{
+body {
 	padding: 0;
-	margin:0px;
-    	background-color: white;
-    	font-family: 'GlacialRegular', sans-serif;
+	margin: 0px;
+    background-color: white;
+    font-family: 'opensans'
 }
 
-
-section{
-	width: 90%;
-	margin:auto;
-    	margin-top: 20px;
-    	position: relative;
-    	text-align: center;
-}
-
-.truc{
-	width: 200px;
-	height: 200px;
-	vertical-align: middle;
-	display: inline-block;
-	position: relative;
-	padding: 2;
+#mainWrapper {
+	width: 95%;
+	max-width: 1024px;
 }

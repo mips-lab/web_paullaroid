@@ -2,7 +2,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:define-macro="layout">
   <head>
-    <title> ${title}</title>
+    <title>${title}</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> </meta>
     <link rel="stylesheet" href="${request.static_url('web_paullaroid:static/knacss.css')}" > </link>
     <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/style.css')}"> </link>
@@ -10,8 +10,9 @@
   <body>
     <div id="mainWrapper">
       <header>
-	<h1> ${title} </h1>
-	<br />
+        <a class="logo" href="/">
+          <img src="${request.static_url('web_paullaroid:static/logo-paullaroid.svg')}" alt="PauLLAroid - photomaton numérique - par PauLLA"/>
+        </a>
 	<tal:block metal:define-slot="navigo">
 	</tal:block>
       </header>
@@ -20,7 +21,7 @@
 	<tal:block metal:define-slot="main">
 	</tal:block>
       </main>
-      <footer> </footer>
+      <footer>&copy;2016 PauLLA</footer>
     </div>
   </body>
 </html>
