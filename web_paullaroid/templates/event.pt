@@ -6,6 +6,7 @@
     <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
   </nav>
 
+  <div id="main" class="center" metal:fill-slot="main">
     <div id="search" tal:condition="len(dates) > 1">
       <h3>Chercher votre photo : </h3>
       <form method="GET" action= "${request.route_path('event', event=event_name)}">
@@ -38,4 +39,5 @@
 	</a>
       </div>
     </section>
+  </div>
 </tal:block>
