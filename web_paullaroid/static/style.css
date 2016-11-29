@@ -1,13 +1,17 @@
 
+/* ---------- main rules ---------- */
+
 body {
     width: 100%;
 }
+
 #mainWrapper {
     max-width: 1200px;
     padding: 20px;
     width: 95%;
     margin: auto;
 }
+
 ul,
 ul li {
     list-style-type: none;
@@ -26,14 +30,15 @@ main,
 footer {
     margin-bottom: 20px;
 }
-footer li {
-    display: inline-block;
-    margin-right: 2px;
-    font-size: 12px;
-    color: #AAA;
+
+/* ---------- header ---------- */
+
+header .logo-paullaroid {
+	display: inline-block;
+	margin-bottom: 20px;
 }
 
-/* ---------- menus ---------*/
+/* ---------- main menus ---------- */
 #menu-main li {
     display: inline-block;
     margin-right: 2px;
@@ -52,4 +57,17 @@ footer li {
 }
 #menu-events a:hover {
     color: #5c99de;
+}
+
+/* ---------- footer ---------- */
+
+footer {
+	text-align: center;
+}
+
+footer li {
+    display: inline-block;
+    margin-right: 2px;
+    font-size: 12px;
+    color: #AAA;
 }

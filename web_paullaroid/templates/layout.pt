@@ -10,9 +10,15 @@
   <body>
     <div id="mainWrapper">
       <header>
-        <a class="logo" href="/">
-          <img src="${request.static_url('web_paullaroid:static/logo-paullaroid.svg')}" alt="PauLLAroid - photomaton numérique - par PauLLA"/>
+        <a class="logo-paullaroid" href="/" title="PauLLAroid - photomaton numérique créé par PauLLA">
+          <img src="${request.static_url('web_paullaroid:static/logo-paullaroid.svg')}" alt="logo PauLLAroid"/>
         </a>
+        <div class="infos-paulla">
+          <span>Une application et un site créés par&nbsp;</span>
+          <a class="logo-paulla" href="http://www.paulla.asso.fr" title="PauLLA : Pau Logiciels Libre Association">
+            <img src="${request.static_url('web_paullaroid:static/logo-paulla.png')}" alt="logo PauLLA"/>
+          </a>
+        </div>
 	<tal:block metal:define-slot="navigo">
 	</tal:block>
       </header>

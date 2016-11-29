@@ -1,6 +1,6 @@
 <tal:block metal:use-macro="load: layout.pt">
 
-    <nav id="menu-main" role="navigation" metal:fill-slot="navigo">
+    <nav id="menu-main" class="clearfix" role="navigation" metal:fill-slot="navigo">
       <a href="${request.route_path('home')}">Home</a>
     </nav>
     <nav id="menu-events" metal:fill-slot="main">
