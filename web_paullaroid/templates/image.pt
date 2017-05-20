@@ -1,7 +1,7 @@
 <tal:block metal:use-macro="load: layout.pt">
 
     <nav metal:fill-slot="navigo">
-       <a title="PauLLARoid Home" href="${request.route_path('home')}">Home</a>  >
+       <a title="PauLLARoid Home" href="${request.route_path('home')}">Home</a> -&gt;
        <a title="${event_name}" href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
     </nav>
 
