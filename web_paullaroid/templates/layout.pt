@@ -10,15 +10,19 @@
   <body>
     <div id="mainWrapper">
       <header>
-        <a class="logo-paullaroid" href="/" title="PauLLAroid - photomaton numérique créé par PauLLA">
-          <img src="${request.static_url('web_paullaroid:static/logo-paullaroid.svg')}" alt="logo PauLLAroid"/>
+	      <div class="grid">
+	      <div>
+        <a href="/" title="PauLLAroid - photomaton numérique créé par PauLLA">
+          <img class="logo-paullaroid" src="${request.static_url('web_paullaroid:static/logo-paullaroid.svg')}" alt="logo PauLLAroid"/>
         </a>
+	      </div>
         <div class="infos-paulla">
-          <span>Une application et un site créés par&nbsp;</span>
+		<span>une application et un site créés par&nbsp;</span><br />
           <a class="logo-paulla" href="http://www.paulla.asso.fr" title="PauLLA : Pau Logiciels Libre Association">
             <img src="${request.static_url('web_paullaroid:static/logo-paulla.png')}" alt="logo PauLLA"/>
           </a>
         </div>
+	      </div>
 	<tal:block metal:define-slot="navigo">
 	</tal:block>
       </header>
@@ -29,6 +33,7 @@
       </main>
       <footer
 	 tal:define="dt import:datetime">
+	      code disponible sur <a href="https://github.com/mips-lab/web_paullaroid" target="_blank" rel="nofollow">Github</a> 
 	 &copy;1999-${dt.datetime.now().year}  PauLLA</footer>
     </div>
   </body>

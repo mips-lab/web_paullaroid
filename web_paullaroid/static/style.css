@@ -34,8 +34,13 @@ footer {
 /* ---------- header ---------- */
 
 header .logo-paullaroid {
-	display: inline-block;
-	margin-bottom: 20px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+header .infos-paulla {
+	text-align: center;
 }
 
 /* ---------- main menus ---------- */
@@ -48,6 +53,7 @@ header .logo-paullaroid {
     background: #AAA;
     color: white;
     font-size: 20px;
+    border-radius: 1rem;
 }
 #menu-main a:hover {
     background: #BBB;
