@@ -27,7 +27,9 @@
 	<tal:block metal:define-slot="main">
 	</tal:block>
       </main>
-      <footer>&copy;2016 PauLLA</footer>
+      <footer
+	 tal:define="dt import:datetime">
+	 &copy;1999-${dt.datetime.now().year}  PauLLA</footer>
     </div>
   </body>
 </html>
