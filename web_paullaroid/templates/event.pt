@@ -2,7 +2,7 @@
 <tal:block metal:use-macro="load: layout.pt">
 
   <nav id="menu-main" class="clearfix" metal:fill-slot="navigo">
-    <a href="${request.route_path('home')}">Home</a> -&gt;
+    <a href="${request.route_path('home')}">Home</a> &#x2192;
     <a href="${request.route_path('event', event=event_name)}"> ${event_name}</a>
   </nav>
 
