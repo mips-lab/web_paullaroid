@@ -36,16 +36,14 @@ def event_view(request):
 
     if selected_date:
         images = request.db.view('_design/images/_view/all', reduce=False,
-                                  start_key=[event_name, selected_date],
-                                  end_key=[event_name, selected_date, {}])
+                                  end_key=[event_name, selected_date],
+                                  start_key=[event_name, selected_date, {}],
+                                  descending=True)
     else:
         images = request.db.view('_design/images/_view/all', reduce=False,
-                                  start_key=[event_name],
-                                  end_key=[event_name, {}])
-
-        if len(dates) > 1:
-            images = [image for image in images][:10]
-
+                                  end_key=[event_name],
+                                  start_key=[event_name, {}], limit=10, 
+                                  descending=True)
 
     return {'title': event_name,
             'event_name': event_name,
