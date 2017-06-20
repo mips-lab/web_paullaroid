@@ -6,25 +6,29 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> </meta>
     <link rel="stylesheet" href="${request.static_url('web_paullaroid:static/knacss.css')}" > </link>
     <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/style.css')}"> </link>
+    <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/slider-nounours/nounours.css')}"> </link>
+    <script src="${request.static_url('web_paullaroid:static/slider-nounours/nounours.js')}"> </script>
   </head>
   <body>
     <div id="mainWrapper">
       <header>
-	      <div class="grid">
+	      
 	      <div>
-        <a href="/" title="PauLLAroid - photomaton numérique créé par PauLLA">
-          <img class="logo-paullaroid" src="${request.static_url('web_paullaroid:static/logo-paullaroid.svg')}" alt="logo PauLLAroid"/>
-        </a>
+        	<a href="/" title="PauLLAroid - photomaton numérique créé par PauLLA">
+          		<img class="logo-paullaroid" src="${request.static_url('web_paullaroid:static/logo-paullaroid.svg')}" alt="logo PauLLAroid"/>
+        	</a>
+		
+		<tal:block metal:define-slot="navigo">
+		</tal:block>
+
 	      </div>
-        <div class="infos-paulla">
+        	<div class="infos-paulla">
 		<span>une application et un site créés par&nbsp;</span><br />
-          <a class="logo-paulla" href="http://www.paulla.asso.fr" title="PauLLA : Pau Logiciels Libre Association">
-            <img src="${request.static_url('web_paullaroid:static/logo-paulla.png')}" alt="logo PauLLA"/>
-          </a>
-        </div>
-	      </div>
-	<tal:block metal:define-slot="navigo">
-	</tal:block>
+          	<a class="logo-paulla" href="http://www.paulla.asso.fr" title="PauLLA : Pau Logiciels Libre Association">
+            		<img src="${request.static_url('web_paullaroid:static/logo-paulla.png')}" alt="logo PauLLA"/>
+          	</a>
+              </div>
+	      
       </header>
 
       <main>
