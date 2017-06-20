@@ -4,8 +4,8 @@
       <a href="${request.route_path('home')}">Home</a>
     </nav>
     <nav id="menu-events" metal:fill-slot="main">
-      <ul tal:repeat="event events">
-        <li>
+      <ul>
+        <li tal:repeat="event events">
           <p class="event">
             il y a actuellement ${event.value['nb']} photos dans cette galerie
   	  <a class="event-link"
