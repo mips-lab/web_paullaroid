@@ -3,17 +3,21 @@
     <nav id="menu-main" class="clearfix" role="navigation" metal:fill-slot="navigo">
       <a href="${request.route_path('home')}">Home</a>
     </nav>
+    
     <nav id="menu-events" metal:fill-slot="main">
-      <ul>
+       <h2>Les Galeries</h2>
+       <ul>
         <li tal:repeat="event events">
-          <p class="event">
-            il y a actuellement ${event.value['nb']} photos dans cette galerie
   	  <a class="event-link"
   	     href="${request.route_path('event',event=event.key[0])}">
-  	    ${event.key[0]}
-  	  </a>
-  	</p>
-        </li>
+  	    <h3>${event.key[0]}</h3>
+  	  
+	  
+          <p class="event">
+            il y a actuellement ${event.value['nb']} photos dans cette galerie
+          </p>
+	  </a>
+	</li>
       </ul>
     </nav>
 </tal:block>

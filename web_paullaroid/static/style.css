@@ -33,6 +33,12 @@ footer {
     margin-bottom: 20px;
 }
 
+h3
+{
+	font-size : 2rem;
+	margin-bottom : 5px;
+}
+
 /* ---------- header ---------- */
 
 
@@ -63,7 +69,6 @@ header nav
 	padding-top : 10px;
 }
 
-
 /* --------- search --------- */
 
 #search h3
@@ -92,13 +97,33 @@ header nav
 #menu-main a:hover {
     background: #BBB;
 }
-#menu-events a {
+#menu-events a h3{
     color: #205C90;
 }
-#menu-events a:hover {
+#menu-events a:hover h3{
     color: #5c99de;
 }
 
+#menu-events li
+{
+	border-bottom : 1px dashed black;
+}
+
+#menu-events li a
+{
+	color:black;
+}
+
+#menu-events li:hover
+{
+	background-color:rgba(139, 196, 228, 0.2);
+	cursor:pointer !important;
+}
+
+#menu-events h2
+{
+	border-bottom:1px solid black;
+}
 /* ---------- footer ---------- */
 
 footer {
