@@ -100,23 +100,65 @@ header nav
 #menu-events a h3{
     color: #205C90;
 }
-#menu-events a:hover h3{
+#menu-events li:hover h3{
     color: #5c99de;
 }
 
 #menu-events li
 {
 	border-bottom : 1px dashed black;
+	heigth:65px;
+	border:1px solid #ddd;
+	border-radius : 5px 0px 0px 5px;
+	margin-bottom:10px;
+	box-shadow : 0px 0px 2px white inset; 
+	
 }
 
 #menu-events li a
 {
 	color:black;
+	heigth:100%;
+}
+
+#menu-events li a .event
+{
+	color:black;
+	heigth:100%;
+	display:none;
+}
+
+#menu-events li .gauche , #menu-events li .droite
+{
+	display:inline-block;
+	vertical-align:middle;
+}
+
+#menu-events li .gauche
+{
+	width:100px;
+	padding-left:5px;
+	text-align:center;
+	background-color:rgba(139, 196, 228, 0.5);
+	font-weight:800;
+	color:rgba(0,0,0,0.7);
+	box-shadow: 0px 0px 5px white inset;
+	line-height: 90%;
+    font-size: 15;
+    padding: 5px;
+	
+}
+
+#menu-events li .gauche .chiffre
+{
+	    font-size: 30px;
+    line-height: 100%;
+	display:block;
 }
 
 #menu-events li:hover
 {
-	background-color:rgba(139, 196, 228, 0.2);
+	background-color:rgba(139, 196, 228, 0.1);
 	cursor:pointer !important;
 }
 
