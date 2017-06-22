@@ -134,6 +134,12 @@ header nav
 	vertical-align:middle;
 }
 
+#menu-events li .droite
+{
+	overflow: hidden;
+	text-overflow: ellipsis; 
+}
+
 #menu-events li .gauche
 {
 	width:100px;
@@ -181,15 +187,6 @@ footer li {
 
 
 /* -------- position element in flex ----- */
-
-
-body,#mainWrapper, main, #main, #grid-views
-{
-	
-	flex-direction : column;
-	flex:1;
-	align-items: stretch;
-}
 
 #slider
 {

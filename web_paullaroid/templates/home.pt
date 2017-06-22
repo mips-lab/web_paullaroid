@@ -7,8 +7,10 @@
     <nav id="menu-events" metal:fill-slot="main">
        <h2>Les Galeries</h2>
        <ul>
-        <li tal:repeat="event events">
+        
+	<tal:block repeat="event events">
   	  <a class="event-link"	href="${request.route_path('event',event=event.key[0])}">
+	  <li>
   	     <div class="gauche">
 		<span class="chiffre"> ${event.value['nb']} </span>
 	        photos
@@ -17,8 +19,9 @@
 		<h3>${event.key[0]}</h3>
 	     </div>
   	  
+	  </li>
 	  </a>
-	</li>
+	</tal:block>
       </ul>
     </nav>
 </tal:block>

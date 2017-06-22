@@ -31,17 +31,22 @@
     <section id="grid-views">
       <div id="slider" height="">
 	<tal:block repeat="image images">
-          <img src="${request.route_path('image_raw',
-                    event=request.matchdict['event'],
-                    image=image)}"
-               alt="${image}"
-	       class="thumb mas"/>
-        </tal:block>
+           <a href="${request.route_path('image_raw',
+                    	    	event=request.matchdict['event'],
+                    	    	image=image)}">
+	   	<img 	src=	"${request.route_path('image_raw',
+                    	    	event=request.matchdict['event'],
+                    	    	image=image)}"
+	
+               		alt=	"${image}"
+	       		class=	"thumb mas"/>
+           </a>
+	</tal:block>
       </div>
     </section>
   <script>
  	var ele = document.getElementById("slider");//on selectionne l'element qui contient les images 
-    	slider = new Nounours(ele,30000);//on creer le slider
+    	slider = new Nounours(ele,-1);//on creer le slider
     	slider.reset();//on le reset 
   </script>
   </div>
