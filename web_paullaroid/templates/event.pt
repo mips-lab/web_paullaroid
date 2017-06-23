@@ -19,9 +19,9 @@
               ${date.strftime('%d-%m-%Y')}
             </option>
 	    <option
-		  value="${date.isoformat()}"
-		  tal:condition="date.isoformat() != request.GET.get('date_pict')">
-                  ${date.strftime('%d-%m-%Y')}
+		value="${date.isoformat()}"
+		tal:condition="date.isoformat() != request.GET.get('date_pict')">
+                ${date.strftime('%d-%m-%Y')}
             </option>
 	  </tal:block>
         </select>
@@ -45,9 +45,18 @@
       </div>
     </section>
   <script>
- 	var ele = document.getElementById("slider");//on selectionne l'element qui contient les images 
+ 	//mise en place du slider
+	var ele = document.getElementById("slider");//on selectionne l'element qui contient les images 
     	slider = new Nounours(ele,-1);//on creer le slider
-    	slider.reset();//on le reset 
+    	slider.reset();//on le reset
+	
+	//modif instant pour le select
+	date_pict.onchange = function()
+	{
+		console.log(this.value);
+		window.location.assign("${request.route_path('event', event=event_name)}?date_pict="+this.value);
+
+	} 
   </script>
   </div>
 </tal:block>
