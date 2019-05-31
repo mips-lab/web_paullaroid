@@ -28,35 +28,21 @@
         <input type="submit" value="Chercher" />
       </form>
     </div>
-    <section id="grid-views">
-      <div id="slider" height="">
-	<tal:block repeat="image images">
-           <a href="${request.route_path('image_raw',
-                    	    	event=request.matchdict['event'],
-                    	    	image=image)}">
-	   	<img 	src=	"${request.route_path('image_raw',
-                    	    	event=request.matchdict['event'],
-                    	    	image=image)}"
-	
-               		alt=	"${image}"
-	       		class=	"thumb mas"/>
-           </a>
+    <tal:block repeat="list images">
+    <div id="thumbnails" class="autogrid has-gutter-l" style="margin-bottom: 5rem;">
+		    <tal:block repeat="image list">
+	    		<div style="text-align: center;">
+			           <a data-fancybox="event" href="${request.route_path('image_raw',
+	                    	    	event=request.matchdict['event'],
+	                    	    	image=image)}">
+		   	<img 	src=	"${request.route_path('image_thumb',
+	                    	    	event=request.matchdict['event'],
+	                    	    	image=image)}"
+	               		alt=	"${image}"/>
+		           </a>
+			</div>
 	</tal:block>
-      </div>
-    </section>
-  <script>
- 	//mise en place du slider
-	var ele = document.getElementById("slider");//on selectionne l'element qui contient les images 
-    	slider = new Nounours(ele,-1);//on creer le slider
-    	slider.reset();//on le reset
-	
-	//modif instant pour le select
-	date_pict.onchange = function()
-	{
-		console.log(this.value);
-		window.location.assign("${request.route_path('event', event=event_name)}?date_pict="+this.value);
-
-	} 
-  </script>
+    </div>
+    </tal:block>
   </div>
 </tal:block>

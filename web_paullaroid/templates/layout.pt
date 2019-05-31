@@ -8,6 +8,9 @@
     <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/style.css')}"> </link>
     <link type="text/css" rel="stylesheet" href="${request.static_url('web_paullaroid:static/slider-nounours/nounours.css')}"> </link>
     <script src="${request.static_url('web_paullaroid:static/slider-nounours/nounours.js')}"> </script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
   </head>
   <body>
     <div id="mainWrapper">
@@ -37,8 +40,10 @@
       </main>
       <footer
 	 tal:define="dt import:datetime">
-	      code disponible sur <a href="https://github.com/mips-lab/web_paullaroid" target="_blank" rel="nofollow">Github</a> 
-	 &copy;1999-${dt.datetime.now().year}  PauLLA</footer>
+	      code disponible sur <a href="https://github.com/mips-lab/web_paullaroid" target="_blank" rel="nofollow">Github</a> // <a rel="me" href="https://mastodon.tetaneutral.net/@photomaton_paulla"><img src="/static/mastodon.ico" alt="mastodon" width="20px" />@photomaton_paulla@mastodon.tetaneutral.net</a>
+	      <br />
+	 &copy;1999-${dt.datetime.now().year}  PauLLA      
+      </footer>
     </div>
   </body>
 </html>

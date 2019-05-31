@@ -13,7 +13,6 @@ def home_view(request):
     events = request.db.view('_design/images/_view/all', reduce=True,
                              group_level=1)
 
-
     return {'project': 'web_paullaroid', 'title': 'PauLLAroid',
             'events': [row for row in events]}
 
@@ -44,12 +43,20 @@ def event_view(request):
                                   end_key=[event_name],
                                   start_key=[event_name, {}], limit=10, 
                                   descending=True)
+    image2 = []
+    imlist = []
+    images = list(images)
+    for image in images:
+        image2.append(image.id)
+        if (images.index(image) +1) % 4 == 0:
+            imlist.append(image2)
+            image2 = list()
+            
 
     return {'title': event_name,
             'event_name': event_name,
-            'images': [image.id for image in images],
+            'images': imlist,
              'dates': [datetime.datetime.strptime(date.key[1], '%Y-%m-%d').date() for date in dates]}
-
 
 @view_config(route_name='image', renderer='templates/image.pt')
 def image_view(request):
