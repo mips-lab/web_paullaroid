@@ -24,6 +24,7 @@ def event_view(request):
         you can select date, to find specific pic
     '''
     selected_date = request.GET.get('date_pict')
+    selected_hour = request.GET.get('hour_pict')
     event_name = request.matchdict['event']
 
 
@@ -38,11 +39,35 @@ def event_view(request):
                                   end_key=[event_name, selected_date],
                                   start_key=[event_name, selected_date, {}],
                                   descending=True)
+
     else:
         images = request.db.view('_design/images/_view/all', reduce=False,
                                   end_key=[event_name],
-                                  start_key=[event_name, {}], limit=10, 
+                                  start_key=[event_name, {}], 
                                   descending=True)
+    
+
+    hours = []
+    for image in images:
+        hour = image.id.split('_')[1].split('-')[0]
+        hours.append(hour)
+
+    hours = list(set(hours))
+    hours = [ int(hour.decode('utf-8')) for hour in hours]
+    hours.sort()
+    hours.insert(0, 'all')
+
+    #import pdb; pdb.set_trace()
+    
+    images_new = []
+    if type(selected_hour) == type(int()):
+        for image in images:
+            hour_image = image.id.split('_')[1].split('-')[0]
+            if hour_image == selected_hour:
+                images_new.append(image)
+        images = images_new
+    
+
     image2 = []
     imlist = []
     images = list(images)
@@ -56,7 +81,8 @@ def event_view(request):
     return {'title': event_name,
             'event_name': event_name,
             'images': imlist,
-             'dates': [datetime.datetime.strptime(date.key[1], '%Y-%m-%d').date() for date in dates]}
+             'dates': [datetime.datetime.strptime(date.key[1], '%Y-%m-%d').date() for date in dates],
+             'hours': hours}
 
 @view_config(route_name='image', renderer='templates/image.pt')
 def image_view(request):

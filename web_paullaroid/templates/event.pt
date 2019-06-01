@@ -7,9 +7,11 @@
   </nav>
 
   <div id="main" class="center" metal:fill-slot="main">
-    <div id="search" tal:condition="len(dates) > 1">
-      <h3>Chercher votre photo : </h3>
+    <div id="search" tal:condition="len(dates) > 1" class='autogrid'>
       <form method="GET" action= "${request.route_path('event', event=event_name)}">
+	    <div>      <h3>Chercher votre photo : </h3>  </div>
+      
+	    <div> Date :
         <select id="date_pict" name="date_pict">
 	  <tal:block repeat="date dates">
             <option
@@ -25,7 +27,27 @@
             </option>
 	  </tal:block>
         </select>
+	    </div>
+	    <div> Heure : 
+	<select id="hour_pict" name="hour_pict">
+	  <tal:block repeat="hour hours">
+            <option
+		selected="selected"
+		value="${hour}"
+		tal:condition="hour == request.GET.get('hour_pict')">
+              ${hour}
+            </option>
+	    <option
+		value="${hour}"
+		tal:condition="hour != request.GET.get('hour_pict')">
+                ${hour}
+            </option>
+	  </tal:block>
+        </select>
+	</div>
+	<div>
         <input type="submit" value="Chercher" />
+	</div>
       </form>
     </div>
     <tal:block repeat="list images">
